@@ -1,4 +1,3 @@
-import Footer from '../../Components/Footer/Footer'
 import AboutUs from './About_Us/AboutUs'
 import ContactUs from './ContactUs/ContactUs'
 import Hero from './Hero/Hero'
@@ -15,7 +14,6 @@ const Website = () => {
       <Services />
       <WhyUs />
       <ContactUs />
-      <Footer />
     </div>
   )
 }

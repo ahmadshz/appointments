@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Login from './Pages/Auth/Login'
 import Website from './Pages/Website/Website'
 import Register from './Pages/Auth/Register'
@@ -12,15 +12,27 @@ import { RequireAuth } from './Pages/Auth/RequireAuth'
 import { RequireBack } from './Pages/Auth/RequireBack'
 import AboutUs from './Pages/Website/About_Us/AboutUs'
 import Headers from './Components/Header/Headers'
+import ContactUs from './Pages/Website/ContactUs/ContactUs'
+import Footer from './Components/Footer/Footer'
 
 function App() {
 
+  const location = useLocation(); 
+  const hiddenHeader = location.pathname === '/login' || location.pathname === '/signup'|| location.pathname.startsWith('/dashboard')
+  
   return (
     <div >
-    <Headers />
+    {
+      hiddenHeader ? null : <Headers />
+    }
+    
       <Routes>
         <Route path='/' element={<Website />} />
         <Route path='/about' element={<AboutUs />} />
+        <Route path='/contact' element={<ContactUs />} />
+
+
+
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Register />} />
 
@@ -43,6 +55,9 @@ function App() {
         </Route>
 
       </Routes>
+      {
+        hiddenHeader ? null : <Footer />
+      }
     </div>
   )
 }

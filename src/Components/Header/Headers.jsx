@@ -1,7 +1,8 @@
-import { RiMenu4Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import HeaderMobile from "./HeaderMobile";
 import { useState } from "react";
+import { FaUserPlus } from "react-icons/fa";
+import { HiOutlineMenu } from "react-icons/hi";
 
 const Headers = () => {
   const [show, setShow] = useState(false);
@@ -26,31 +27,27 @@ const Headers = () => {
             Home
           </Link>
           <Link to="/about" className="font-medium text-xl hover:text-primary duration-300">
-            About
+            About Us
           </Link>
-          <Link to="/find-doctor" className="font-medium text-xl hover:text-primary duration-300">
-            Find Doctor
-          </Link>
-          <Link to="/blog" className="font-medium text-xl hover:text-primary duration-300">
-            Blog
-          </Link>
+
           <Link to="/contact" className="font-medium text-xl hover:text-primary duration-300">
             Contact
           </Link>
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-2">
           <Link
             to="/login"
-            className="bg-transparent font-bold border-2 border-primary text-primary rounded-md py-3 px-8  
+            className="hidden lg:block bg-transparent font-bold border-2 border-primary text-primary rounded-md py-3 px-8  
                                    hover:bg-primary hover:text-white duration-300 cursor-pointer"
           >
             LogIn
           </Link>
+          <FaUserPlus className=" text-[#234A6B] lg:hidden" size={26} />
 
-          <RiMenu4Line
+          <HiOutlineMenu
             onClick={handleOpen}
-            className="lg:hidden cursor-pointer"
+            className="lg:hidden cursor-pointer text-[#234A6B]"
             size={30}
           />
         </div>
