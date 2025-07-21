@@ -30,8 +30,8 @@ const Register = () => {
     try {
       const res = await axios.post(`${baseUrl}/user/register`, form);
          const token =  res.data.token
-        cookies.set('auth_token', token);
-        navigate('/dashboard/users');
+         cookies.set('token', token, { path: '/' });
+         navigate('/dashboard/users');
       
     } catch (err) {
       if (err.response?.status === 400) {

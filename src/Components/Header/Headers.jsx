@@ -11,8 +11,8 @@ const Headers = () => {
   };
 
   return (
-    <div className="w-full h-20 flex items-center fixed z-10 bg-[#ffffffae] backdrop-blur-xl shadow-sm">
-      <div className="container flex justify-between items-center mx-auto px-4  ">
+    <div className="w-full h-20 flex items-center fixed z-10 bg-[#ffffffae] backdrop-blur-xl shadow-lg">
+      <div className="container flex justify-between items-center mx-auto  ">
         <Link
           to="/"
           className="text-4xl font-bold text-[#0086FF]"

@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HiEye, HiEyeOff } from "react-icons/hi";
-import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import Cookies from "universal-cookie"; // Import universal-cookie
 import { baseUrl } from "../../Api/Api";
 
 const Login = () => {
-  // State
+  // State 
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -18,24 +17,25 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // Cookies
+  // Create Cookies
   const cookies = new Cookies();
 
+  // Function to handle form input changes
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Handle Submit Form
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(`${baseUrl}/user/login`, form);
       const token = res.data.token
-      cookies.set('auth_token', token);
-      navigate('/dashboard');
+      cookies.set('auth_token', token, { path: '/' });
+      navigate('/dashboard/users');
 
     } catch (err) {
-      if (err.response && err.response.status === 400) {
+      if (err.response && err.response.status === 401) {
         setError('Email or password is incorrect');
       }
     }
@@ -81,6 +81,7 @@ const Login = () => {
           >
             Log In
           </button>
+          {/* Display error message */}
           {error && <p className="text-red-500 text-center mt-5">{error}</p>}
         </form>
 
@@ -90,13 +91,7 @@ const Login = () => {
           <hr className="border-t border-gray-300 flex-1" />
         </div>
 
-        <button
-          type="submit"
-          className="w-full mt-8 mb-4 py-3 px-4 relative bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          <FaFacebookF size={25} className="absolute left-4 top-3" />
-          Login with Facebook
-        </button>
+        {/* Google Login Button */}
         <button
           type="submit"
           className="w-full relative py-3 px-4 border-[1.5px] border-slate-800 rounded-md focus:outline-none focus:ring-1 focus:ring-slate-700 duration-300"
