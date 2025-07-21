@@ -1,7 +1,6 @@
 import Dentistry from '../assets/Image/denistry.png'
 import Diagnosis from '../assets/Image/diagnosis.png'
 import Surgery from '../assets/Image/NeuroSurgery.png'
-import Cardiology from '../assets/Image/cardio.png'
 import Pharmacy from '../assets/Image/pharmacy.png'
 import Trained_Staff from '../assets/Image/trainedStaff.png'
 import DNA  from '../assets/Image/Dna.png'
@@ -24,11 +23,7 @@ export const data = [
         icon: Surgery,
         desc: "Get consultation Form our Dentistry team"
     },
-    {
-        title: "Cardiology",
-        icon: Cardiology,
-        desc: "Get consultation Form our Cardiology team"
-    },
+   
     {
         title: "Pharmacy",
         icon: Pharmacy,
